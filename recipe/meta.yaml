@@ -9,24 +9,26 @@ source:
   sha256: 72f729bb211e17dfecc3d0157f57821bf9a3277039622f944db361bc1e91b7ae
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - setuptools
   run:
     - deprecated
     - h5py
     - numpy
     - openpmd-api
-    - python >=3.6
+    - python >={{ python_min }}
     - scipy
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - aptools
 
